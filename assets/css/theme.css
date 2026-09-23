@@ -1,0 +1,461 @@
+/* ==========================================================================
+   BMS CORE THEME / NAVIGATION CSS
+   --------------------------------------------------------------------------
+   Structural rules for the starter theme, mega menu and mobile offcanvas.
+   Do not place project-specific overrides in this file. Use style.css under
+   PROJECT CUSTOM CSS, or preferably a child theme. Never edit vendor CSS.
+   ========================================================================== */
+
+:root {
+    --bms-header-height: 72px;
+    --bms-mega-min-column: 190px;
+    --bms-border: #e7e7ea;
+    --bms-muted: #6c757d;
+}
+
+.site-header {
+    position: relative;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid var(--bms-border);
+}
+
+.navbar {
+    min-height: var(--bms-header-height);
+}
+
+.bms-mega-parent.position-static {
+    position: static !important;
+}
+
+.bms-mega-menu {
+    --bms-mega-columns: 4;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0 0 .75rem .75rem;
+    border: 0;
+    border-top: 1px solid var(--bms-border);
+    box-shadow: 0 1rem 2.5rem rgba(20, 24, 32, .12);
+    padding: 1.25rem 0;
+    top: 100%;
+}
+
+/* The mega menu uses Bootstrap's native .container with no custom max-width.
+   This keeps its left/right edges identical to the header logo container at every breakpoint. */
+.bms-mega-menu > .container {
+    width: 100%;
+}
+
+
+.bms-mega-layout {
+    display: grid;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.bms-mega-layout.bms-image-left,
+.bms-mega-layout.bms-image-right {
+    grid-template-columns: minmax(180px, 26%) 1fr;
+}
+
+.bms-mega-layout.bms-image-right {
+    grid-template-columns: 1fr minmax(180px, 26%);
+}
+
+.bms-mega-layout.bms-image-top,
+.bms-mega-layout.bms-image-bottom {
+    grid-template-columns: 1fr;
+}
+
+.bms-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--bms-mega-columns), minmax(0, 1fr));
+    gap: .25rem 1.25rem;
+    width: 100%;
+}
+
+.bms-mega-link {
+    display: block;
+    padding: .65rem .75rem;
+    color: #212529;
+    text-decoration: none;
+    border-radius: .5rem;
+    transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.bms-mega-link:hover,
+.bms-mega-link:focus {
+    background: #f5f6f8;
+    color: #0d6efd;
+    transform: translateX(2px);
+}
+
+.bms-mega-media {
+    overflow: hidden;
+    margin: 0;
+    justify-self: stretch;
+    border-radius: .75rem;
+    background: #f7f7f8;
+}
+
+.bms-mega-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+@media (max-width: 991.98px) {
+    .bms-mega-menu {
+        position: static !important;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        padding: .5rem 0 .75rem 1rem;
+        border-top: 0;
+    }
+
+    .bms-mega-layout,
+    .bms-mega-layout.bms-image-left,
+    .bms-mega-layout.bms-image-right,
+    .bms-mega-layout.bms-image-top,
+    .bms-mega-layout.bms-image-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .bms-mega-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .bms-mega-media {
+        max-width: 320px;
+    }
+}
+
+/* Desktop mega menus follow Bootstrap's native click-only dropdown behavior. */
+@media (min-width: 992px) {
+    #primaryNavbar .bms-mega-parent > .bms-mega-menu { top: 100%; }
+    #primaryNavbar .bms-mega-parent > .bms-mega-menu.show { display: block; }
+}
+
+/* Right-side mobile navigation */
+.bms-menu-toggle {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid var(--bms-border);
+    border-radius: 12px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: none !important;
+}
+.bms-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #212529;
+    border-radius: 10px;
+    transition: transform .2s ease, width .2s ease;
+}
+.bms-menu-toggle span:nth-child(2) { width: 72%; margin-left: auto; }
+.bms-mobile-nav { width: min(88vw, 390px) !important; border-left: 0 !important; box-shadow: -1rem 0 3rem rgba(20,24,32,.14); }
+.bms-mobile-nav .offcanvas-header { min-height: 76px; padding: 1rem 1.25rem; border-bottom: 1px solid var(--bms-border); }
+.bms-mobile-nav .offcanvas-title { font-weight: 700; font-size: 1.1rem; }
+.bms-mobile-nav .custom-logo { max-height: 44px; width: auto; }
+.bms-mobile-nav .offcanvas-body { padding: .75rem 1.25rem 1.5rem; }
+.bms-mobile-menu > .nav-item { border-bottom: 1px solid var(--bms-border); }
+.bms-mobile-menu > .nav-item > .nav-link { padding: 1rem .25rem; color: #212529; font-weight: 600; display: flex; align-items: center; justify-content: space-between; }
+.bms-mobile-menu .dropdown-menu { position: static !important; transform: none !important; float: none; width: 100%; margin: 0 0 .75rem; padding: .25rem 0 .5rem .5rem; border: 0; box-shadow: none; background: #f8f9fa; border-radius: 12px; }
+.bms-mobile-menu .bms-mega-menu { padding: .5rem !important; }
+.bms-mobile-menu .bms-mega-menu > .container { padding: 0; max-width: none; }
+.bms-mobile-menu .bms-mega-link { padding: .7rem .75rem; }
+.bms-mobile-menu .bms-mega-media { margin: .5rem; max-width: none; }
+
+@media (max-width: 991.98px) {
+    .bms-menu-toggle { display: flex; margin-left: auto; }
+}
+
+/* v0.4 mobile hierarchy: clear separators and indentation for child levels */
+.bms-mobile-menu .dropdown-menu > li + li,
+.bms-mobile-menu .bms-mega-grid > li + li { border-top: 1px solid var(--bms-border); }
+.bms-mobile-menu .dropdown-menu .dropdown-item,
+.bms-mobile-menu .bms-mega-link { padding: .8rem .85rem; }
+.bms-mobile-menu .dropdown-menu .dropdown-menu { margin: 0; padding: 0 0 0 .8rem; border-radius: 0; background: rgba(255,255,255,.55); border-left: 2px solid var(--bms-border); }
+.bms-mobile-menu .dropdown-submenu > a { font-weight: 600; }
+.bms-mobile-menu .current-menu-item > a,
+.bms-mobile-menu .current-menu-ancestor > a { color: var(--bs-primary); }
+
+/* Starter-theme content defaults */
+.site-content { min-height: 45vh; }
+.entry-content img, .comment-content img { max-width: 100%; height: auto; }
+.alignwide { max-width: 1320px; margin-left: auto; margin-right: auto; }
+.alignfull { width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); }
+.wp-caption, .gallery-caption { max-width: 100%; }
+.wp-caption-text { color: var(--bms-muted); font-size: .875rem; }
+.screen-reader-text { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.screen-reader-text:focus { position:fixed!important; top:1rem; left:1rem; z-index:100000; width:auto; height:auto; padding:.75rem 1rem; clip:auto!important; background:#fff; }
+.skip-link { z-index:100000; }
+.post-navigation, .posts-navigation, .pagination { margin: 2rem 0; }
+.widget ul { padding-left: 1.1rem; }
+
+/* v0.5 final testing refinements */
+.container { max-width: var(--bms-container-max, 1320px); }
+.bms-sticky-header .site-header { position: sticky; top: 0; }
+.admin-bar.bms-sticky-header .site-header { top: 32px; }
+.bms-back-to-top { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1030; width: 44px; height: 44px; border-radius: 50%; opacity: 0; visibility: hidden; transform: translateY(8px); transition: .2s ease; }
+.bms-back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.entry-content table, .comment-content table { width: 100%; margin-bottom: 1rem; border-collapse: collapse; }
+.entry-content table th,.entry-content table td,.comment-content table th,.comment-content table td { padding: .65rem; border: 1px solid var(--bms-border); }
+.entry-content blockquote { padding: 1rem 1.25rem; border-left: 4px solid var(--bs-primary); background: #f8f9fa; }
+.entry-meta,.entry-footer { display:flex; flex-wrap:wrap; gap:.5rem 1rem; color:var(--bms-muted); font-size:.9rem; }
+.entry-footer { margin-top:1.5rem; }
+.bms-mega-grid > .bms-menu-item.dropdown-submenu { min-width:0; }
+.bms-mega-grid > .dropdown-submenu > .bms-mega-link { font-weight:700; color:#111827; background:transparent; padding-bottom:.35rem; }
+.bms-mega-grid > .dropdown-submenu > .submenu { display:block; position:static; border:0; box-shadow:none; padding:0; margin:0; min-width:0; }
+.bms-mega-grid > .dropdown-submenu > .submenu .bms-mega-link { font-weight:400; }
+.bms-mobile-menu .dropdown-toggle::after { margin-left:auto; }
+.bms-mobile-menu .dropdown-menu { display:none; }
+.bms-mobile-menu .dropdown-menu.show { display:block; }
+.bms-mobile-menu .dropdown-submenu > .submenu { display:block; }
+.bms-mobile-menu .dropdown-submenu > .submenu > li + li { border-top:1px solid var(--bms-border); }
+.bms-mobile-menu .dropdown-submenu > .submenu a { padding-left:1.15rem; }
+:focus-visible { outline: 3px solid rgba(13,110,253,.35); outline-offset: 2px; }
+@media (max-width:782px){.admin-bar.bms-sticky-header .site-header{top:46px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+/* v0.6 corporate starter polish */
+body.bms-theme { color:#172033; background:#fff; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.65; }
+a { text-underline-offset:3px; }
+.site-header .navbar { box-shadow:0 1px 0 rgba(15,23,42,.03); }
+.navbar-brand { font-weight:750; letter-spacing:-.02em; color:#111827; }
+#primaryNavbar .nav-link { color:#334155; font-weight:600; padding:.75rem .8rem; }
+#primaryNavbar .nav-link:hover,#primaryNavbar .current-menu-item>.nav-link,#primaryNavbar .current-menu-ancestor>.nav-link { color:#0d6efd; }
+.site-content > .container { padding-top:3.5rem!important; padding-bottom:3.5rem!important; }
+.entry-title,.page-title { letter-spacing:-.025em; color:#111827; }
+.entry-content { font-size:1.025rem; }
+.widget { padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.widget + .widget { margin-top:2rem; }
+.widget-title { margin-bottom:1rem; color:#111827; }
+.widget ul { margin-bottom:0; }
+.site-footer { background:#f8fafc; color:#475569; }
+input:not([type=checkbox]):not([type=radio]),select,textarea { max-width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:.65rem .8rem; }
+input:focus,select:focus,textarea:focus { border-color:#86b7fe; box-shadow:0 0 0 .2rem rgba(13,110,253,.12); outline:0; }
+.comment-list { padding-left:0; list-style:none; }
+.comment-list .comment-body { padding:1.25rem; margin-bottom:1rem; border:1px solid #e7eaf0; border-radius:14px; }
+.comment-form textarea { width:100%; }
+
+.bms-header-actions { align-items:center; gap:.35rem; }
+.bms-header-action { position:relative; width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; color:#334155; border:1px solid #e7eaf0; border-radius:10px; text-decoration:none; transition:.2s ease; }
+.bms-header-action:hover { color:#0d6efd; border-color:#bfd6ff; background:#f5f9ff; }
+.bms-header-action svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.bms-cart-count { position:absolute; top:-6px; right:-6px; min-width:19px; height:19px; padding:0 5px; display:flex; align-items:center; justify-content:center; border-radius:20px; background:#0d6efd; color:#fff; font-size:11px; font-weight:700; }
+
+/* Mobile nav: reliable expandable hierarchy + separators */
+.bms-mobile-menu .dropdown-toggle { cursor:pointer; }
+.bms-mobile-menu .dropdown-toggle::after { transition:transform .2s ease; }
+.bms-mobile-menu .dropdown-toggle[aria-expanded="true"]::after { transform:rotate(180deg); }
+.bms-mobile-menu .dropdown-menu { overflow:hidden; }
+.bms-mobile-menu .dropdown-menu > li { border-bottom:1px solid #e5e7eb; }
+.bms-mobile-menu .dropdown-menu > li:last-child { border-bottom:0; }
+.bms-mobile-menu .dropdown-item,.bms-mobile-menu .bms-mega-link { white-space:normal; color:#334155; }
+
+/* WooCommerce: contained, clean corporate catalog instead of edge-to-edge output */
+.bms-shop-shell { background:#f8fafc; min-height:55vh; }
+.woocommerce .woocommerce-breadcrumb { margin:0 0 1rem; color:#64748b; font-size:.9rem; }
+.woocommerce .woocommerce-breadcrumb a { color:#475569; }
+.woocommerce-products-header { margin-bottom:1.75rem; padding-bottom:1.25rem; border-bottom:1px solid #e7eaf0; }
+.woocommerce-products-header__title.page-title { margin:0; font-size:clamp(1.8rem,3vw,2.5rem); }
+.woocommerce .woocommerce-info,.woocommerce .woocommerce-message,.woocommerce .woocommerce-error { border-radius:10px; border-top-width:3px; background:#f8fafc; }
+.woocommerce ul.products { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.5rem; margin:1.5rem 0 0; }
+.woocommerce ul.products::before,.woocommerce ul.products::after { display:none; }
+.woocommerce ul.products li.product { width:auto!important; margin:0!important; padding:1rem; border:1px solid #e7eaf0; border-radius:14px; transition:.2s ease; }
+.woocommerce ul.products li.product:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(15,23,42,.08); }
+.woocommerce ul.products li.product a img { border-radius:10px; }
+.woocommerce .woocommerce-result-count,.woocommerce .woocommerce-ordering { margin-bottom:1.25rem; }
+@media(max-width:991.98px){.woocommerce ul.products{grid-template-columns:repeat(2,minmax(0,1fr));}.site-content > .container{padding-top:2.25rem!important;padding-bottom:2.25rem!important}}
+@media(max-width:575.98px){.woocommerce ul.products{grid-template-columns:1fr}.bms-shop-shell>.container{padding-left:.75rem;padding-right:.75rem}}
+
+/* v0.6.2 — container-aligned desktop mega panel + reliable mobile accordion */
+@media (min-width: 992px) {
+    .site-header .navbar { position: relative; }
+    #primaryNavbar .bms-mega-parent > .bms-mega-menu {
+        left: 50% !important;
+        right: auto !important;
+        width: min(var(--bms-container-max, 1320px), calc(100% - 1.5rem));
+        max-width: var(--bms-container-max, 1320px);
+        transform: translateX(-50%) !important;
+        padding: 1.25rem 0;
+        border: 1px solid var(--bms-border);
+        border-top: 0;
+        border-radius: 0 0 .75rem .75rem;
+    }
+    #primaryNavbar .bms-mega-menu > .container {
+        max-width: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+@media (max-width: 991.98px) {
+    .bms-mobile-menu .bms-submenu-toggle {
+        position: relative;
+        padding-right: 2.4rem !important;
+    }
+    .bms-mobile-menu .bms-submenu-toggle::after {
+        content: "";
+        position: absolute;
+        right: .85rem;
+        top: 50%;
+        width: .48rem;
+        height: .48rem;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform .2s ease;
+    }
+    .bms-mobile-menu .bms-submenu-toggle[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+    }
+    .bms-mobile-menu .dropdown-toggle::after { margin-left: 0; vertical-align: 0; border: 0; }
+    .bms-mobile-menu .dropdown-menu,
+    .bms-mobile-menu .dropdown-submenu > .submenu { display: none !important; }
+    .bms-mobile-menu .dropdown-menu.show,
+    .bms-mobile-menu .dropdown-submenu > .submenu.show { display: block !important; }
+    .bms-mobile-menu .bms-mega-menu > .container { padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+
+/* v0.6.3 — polished mega spacing + dedicated mobile accordion controls */
+.bms-mobile-accordion-toggle { display: none; }
+@media (min-width: 992px) {
+    #primaryNavbar .bms-mega-parent > .bms-mega-menu { padding: 0; }
+    #primaryNavbar .bms-mega-menu > .container {
+        padding: 1.5rem 1.75rem !important;
+    }
+    #primaryNavbar .bms-mega-grid { column-gap: 1.5rem; row-gap: 1rem; }
+    #primaryNavbar .bms-mega-media img { border-radius: .65rem; display:block; }
+}
+@media (max-width: 991.98px) {
+    .bms-mobile-menu li { position: relative; }
+    .bms-mobile-menu li > a.bms-submenu-toggle { padding-right: 3.25rem !important; }
+    .bms-mobile-menu li > a.bms-submenu-toggle::after { display:none !important; content:none !important; }
+    .bms-mobile-accordion-toggle {
+        display: inline-flex;
+        position: absolute;
+        top: .62rem;
+        right: .2rem;
+        z-index: 3;
+        width: 2.25rem;
+        height: 2.25rem;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--bms-border);
+        border-radius: .55rem;
+        background: #fff;
+        color: #334155;
+        cursor: pointer;
+    }
+    .bms-mobile-accordion-toggle span { width:.52rem; height:.52rem; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:translateY(-2px) rotate(45deg); transition:transform .2s ease; }
+    .bms-mobile-accordion-toggle.is-open span { transform:translateY(2px) rotate(225deg); }
+    .bms-mobile-menu .dropdown-menu,
+    .bms-mobile-menu .dropdown-submenu > .submenu { display:none !important; }
+    .bms-mobile-menu .dropdown-menu.show,
+    .bms-mobile-menu .dropdown-submenu > .submenu.show { display:block !important; }
+    .bms-mobile-menu .dropdown-menu { margin-top:.15rem; }
+}
+
+/* v0.6.4 mobile accordion: parent row and chevron both toggle reliably. */
+@media (max-width: 991.98px) {
+  .bms-mobile-menu li:has(> .bms-mobile-accordion-toggle) { position: relative; }
+  .bms-mobile-menu li:has(> .bms-mobile-accordion-toggle) > a { padding-right: 3.5rem !important; cursor: pointer; }
+  .bms-mobile-menu li > .dropdown-menu,
+  .bms-mobile-menu li > .submenu,
+  .bms-mobile-menu li > .bms-mega-menu { display: none !important; position: static !important; transform: none !important; width: 100% !important; min-width: 0 !important; margin: 0 !important; box-shadow: none !important; }
+  .bms-mobile-menu li > .dropdown-menu.show,
+  .bms-mobile-menu li > .submenu.show,
+  .bms-mobile-menu li > .bms-mega-menu.show { display: block !important; }
+}
+
+/* v0.6.6 developer/admin-bar mobile navigation clearance */
+@media (max-width: 782px) {
+    body.admin-bar .bms-mobile-nav {
+        top: 46px;
+        height: calc(100dvh - 46px);
+        max-height: calc(100dvh - 46px);
+    }
+    body.admin-bar .bms-mobile-nav .offcanvas-body {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    }
+}
+@media (min-width: 783px) and (max-width: 991.98px) {
+    body.admin-bar .bms-mobile-nav {
+        top: 32px;
+        height: calc(100dvh - 32px);
+        max-height: calc(100dvh - 32px);
+    }
+}
+
+/* v0.6.8 — mobile accordion polish.
+ * Mega-menu parents carry Bootstrap's .position-static for the desktop full-width
+ * panel. On mobile that class was also changing the containing block for the
+ * absolutely positioned submenu control, pushing Shop's control out of view.
+ */
+@media (max-width: 991.98px) {
+    .bms-mobile-menu .bms-mega-parent {
+        position: relative !important;
+    }
+
+    .bms-mobile-accordion-toggle {
+        border: 0;
+        background: transparent;
+        border-radius: .45rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: #334155;
+    }
+
+    .bms-mobile-accordion-toggle:hover,
+    .bms-mobile-accordion-toggle:focus-visible {
+        background: #f1f5f9;
+        outline: none;
+    }
+
+    /* Clear + / − affordance for every expandable mobile menu item. */
+    .bms-mobile-accordion-toggle span {
+        position: relative;
+        display: block;
+        width: .9rem;
+        height: .9rem;
+        border: 0;
+        transform: none;
+        transition: none;
+    }
+    .bms-mobile-accordion-toggle span::before,
+    .bms-mobile-accordion-toggle span::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: .85rem;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+        transform: translate(-50%, -50%);
+        transition: opacity .18s ease, transform .18s ease;
+    }
+    .bms-mobile-accordion-toggle span::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    .bms-mobile-accordion-toggle.is-open span {
+        transform: none;
+    }
+    .bms-mobile-accordion-toggle.is-open span::after {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}

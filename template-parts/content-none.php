@@ -1,0 +1,1 @@
+<section class="no-results not-found py-5"><h1 class="h3"><?php esc_html_e('Nothing found','bootstrap-mega-starter'); ?></h1><p><?php esc_html_e('Try a search or another section of the site.','bootstrap-mega-starter'); ?></p><?php get_search_form(); ?></section>

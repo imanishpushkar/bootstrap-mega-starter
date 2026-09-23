@@ -1,0 +1,4 @@
+.editor-styles-wrapper { font-family: var(--bs-body-font-family, system-ui, sans-serif); line-height: 1.6; }
+.editor-styles-wrapper .wp-block { max-width: 840px; }
+.editor-styles-wrapper .wp-block[data-align="wide"] { max-width: 1320px; }
+.editor-styles-wrapper .wp-block[data-align="full"] { max-width: none; }

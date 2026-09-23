@@ -1,0 +1,1 @@
+<article id="post-<?php the_ID(); ?>" <?php post_class('mb-4 pb-4 border-bottom'); ?>><header><h2 class="h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2></header><div><?php the_excerpt(); ?></div></article>
