@@ -78,7 +78,13 @@ bootstrap-mega-starter/
 │   ├── js/
 │   │   ├── admin-menu.js
 │   │   └── mega-menu.js
-│   └── vendor/bootstrap/
+│   └── vendor/
+│       └── bootstrap/
+│           ├── css/
+│           │   └── bootstrap.min.css
+│           ├── js/
+│           │   └── bootstrap.bundle.min.js
+│           └── LICENSE
 ├── inc/
 │   ├── class-bs5-mega-navwalker.php
 │   ├── customizer.php
@@ -86,17 +92,40 @@ bootstrap-mega-starter/
 │   ├── menu-fields.php
 │   ├── template-tags.php
 │   └── woocommerce.php
-├── template-parts/
 ├── languages/
+├── template-parts/
+│   ├── content-none.php
+│   ├── content-page.php
+│   ├── content-search.php
+│   └── content.php
+├── .gitignore
+├── 404.php
+├── archive.php
+├── attachment.php
+├── author.php
+├── category.php
+├── comments.php
+├── date.php
+├── footer.php
 ├── functions.php
 ├── header.php
-├── footer.php
+├── index.php
+├── page.php
+├── search.php
+├── searchform.php
+├── sidebar.php
+├── single.php
+├── tag.php
 ├── style.css
 ├── screenshot.png
+├── readme.txt
 ├── LICENSE
 ├── CHANGELOG.md
+├── CONTRIBUTING.md
 └── README.md
 ```
+
+This tree reflects the complete **v1.0.0** release structure. Keep the core paths stable in future compatible releases, especially the mega-menu/navwalker files documented above, so child themes and project customizations can rely on them.
 
 ## WooCommerce
 
